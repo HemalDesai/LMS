@@ -15,6 +15,10 @@
     background-color: #fff;
 }
 
+.bg-auth{
+    background-color: #FFFBF5;
+}
+
 .text-primary {
     color: var(--colour-primary);
 }

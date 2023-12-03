@@ -3,7 +3,7 @@ import React from "react";
 function Button({
   title,
   variant = "contained",
-  color = "primary",
+  color = ["primary"],
   type = "button",
   onClick,
   fullWidth = false,
@@ -21,7 +21,7 @@ function Button({
   }
 
   return (
-    <button className={className} type={type} onClick={onClick}>
+    <button className="bg-[#7743DB]" type={type} onClick={onClick}>
       {title}
     </button>
   );

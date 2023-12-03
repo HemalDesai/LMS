@@ -43,7 +43,8 @@ function Home() {
                 color={book.availableCopies > 0 ? "green" : "red"}
               >
                 <div className="rounded bg-white p-2 shadow flex flex-col gap-1">
-                  <img src={book.image} height="350px" />
+                  <img src={book.image} alt={book.title} 
+                       style={{ maxWidth: '100%', maxHeight: '350px', objectFit: 'contain' }} />
                   <h1 className="text-md text-secondary uppercase font-bold mt-2">
                     {book.title}
                   </h1>

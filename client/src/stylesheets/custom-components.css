@@ -56,6 +56,11 @@ i{
   font-size: 18px;
 }
 
+img{
+  width: 500px;
+  height: 500px;
+}
+
 
 table{
   border : 1px solid #cdcdcd;

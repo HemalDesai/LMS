@@ -59,7 +59,8 @@ function Books() {
     {
       title: "Book",
       dataIndex: "image",
-      render: (image) => <img src={image} alt="book" width="60" height="60" />,
+      render: (image) => <img src={image} alt="book" style={{ width: '60px', height: 'auto' }} />,
+
     },
     {
       title: "Title",
