@@ -1,4 +1,5 @@
-import { message, Table } from "antd";
+import { ConfigProvider, message, Table } from "antd";
+import { Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { DeleteBook, GetAllBooks } from "../../../apicalls/books";
@@ -16,6 +17,7 @@ function Books() {
   const [openIssues, setOpenIssues] = React.useState(false);
   const [openIssuesForm, setOpenIssuesForm] = React.useState(false);
   const [books, setBooks] = React.useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
 
   const getBooks = async () => {
@@ -38,6 +40,13 @@ function Books() {
     getBooks();
   }, []);
 
+  const filteredBooks = books.filter(
+    (book) =>
+      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchTerm.toLowerCase())
+    // Add other fields you want to search by
+  );
+
   const deleteBook = async (id) => {
     try {
       dispatch(ShowLoading());
@@ -59,8 +68,9 @@ function Books() {
     {
       title: "Book",
       dataIndex: "image",
-      render: (image) => <img src={image} alt="book" style={{ width: '60px', height: 'auto' }} />,
-
+      render: (image) => (
+        <img src={image} alt="book" style={{ width: "60px", height: "auto" }} />
+      ),
     },
     {
       title: "Title",
@@ -133,7 +143,20 @@ function Books() {
   ];
   return (
     <div>
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-2 pr-1">
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimaryHover: "#4651EC",
+            },
+          }}
+        >
+          <Input
+            placeholder="Search books"
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{ width: 200 }}
+          />
+        </ConfigProvider>
         <Button
           title="Add Book"
           onClick={() => {
@@ -144,7 +167,7 @@ function Books() {
         />
       </div>
 
-      <Table columns={columns} dataSource={books} className="mt-1" />
+      <Table columns={columns} dataSource={filteredBooks} className="mt-1" />
 
       {openBookForm && (
         <BookForm
