@@ -27,6 +27,10 @@ Frontend Setup
   npm start
 ```
 
+## API Documenattion
+https://lms-c15i.onrender.com/api-docs
+
+
 
 
     

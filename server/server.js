@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger_output.json');
 app.use(express.json());
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
@@ -14,6 +16,7 @@ app.use("/api/users", usersRoute);
 app.use("/api/books", booksRoute);
 app.use("/api/issues", issuesRoute);
 app.use("/api/reports", reportsRoute);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const path = require("path");
 __dirname = path.resolve();
