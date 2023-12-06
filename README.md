@@ -30,6 +30,10 @@ Frontend Setup
 ## API Documenattion
 https://lms-c15i.onrender.com/api-docs
 
+## Deployed link
+https://lms-c15i.onrender.com
+
+
 
 
 
